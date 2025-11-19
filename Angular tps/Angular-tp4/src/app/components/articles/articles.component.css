@@ -1,0 +1,67 @@
+.container {
+  width: 600px;
+  margin: 30px auto;
+  padding: 20px;
+  background: #fafafa;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.form {
+  margin-bottom: 20px;
+}
+
+.input-box {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+.article {
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  position: relative;
+}
+
+.badge {
+  font-size: 12px;
+  background: #ddd;
+  padding: 3px 8px;
+  border-radius: 5px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+}
+
+/* --- Classes dynamiques avec ngClass --- */
+
+.important {
+  background-color: #ffcccc;
+  border: 1px solid red;
+  }
+  .moyen {
+  background-color: #fff2cc;
+  border: 1px solid orange;
+  }
+  .faible {
+  background-color: #ccffcc;
+  border: 1px solid green;
+  }

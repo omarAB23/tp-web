@@ -1,0 +1,21 @@
+<h2>Liste des Produits</h2>
+
+<div *ngFor="let p of products" class="product">
+
+  <h3>{{ p.nom }}</h3>
+
+  <!-- Stock avec style dynamique -->
+  <p [ngStyle]="{
+    'color': p.stock > 50 ? 'green' : 
+             p.stock >= 20 ? 'orange' : 
+             'red'
+  }">
+    Stock : {{ p.stock }}
+  </p>
+
+  <button (click)="augmenterStock(p)">+</button>
+  <button (click)="diminuerStock(p)">-</button>
+
+  <p *ngIf="p.stock <= 0" class="out-of-stock">Produit épuisé</p>
+</div>
+  

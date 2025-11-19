@@ -1,0 +1,26 @@
+<div class="container">
+
+  <h2>Connexion</h2>
+
+  <!-- Champ prénom -->
+  <input 
+      type="text" 
+      placeholder="Entrez votre prénom"
+      [(ngModel)]="username"
+      class="input-box">
+
+  <br>
+
+  <!-- Bouton connexion/déconnexion -->
+  <button (click)="toggleLogin()" class="btn">
+    {{ isLoggedIn ? 'Se déconnecter' : 'Se connecter' }}
+  </button>
+
+  <hr>
+
+  <!-- Affichage conditionnel -->
+  <h3 *ngIf="isLoggedIn" class="welcome">
+    Bienvenue, utilisateur !
+  </h3>
+
+</div>

@@ -1,0 +1,36 @@
+<h2>Gestion des livres</h2>
+
+<div style="display: flex; gap: 12px; align-items: center; margin-bottom: 12px">
+  <input
+    type="text"
+    placeholder="Recherche titre ou auteur"
+    [(ngModel)]="searchText"
+  />
+
+  <select [(ngModel)]="sortBy">
+    <option value="">-- Pas de tri --</option>
+    <option value="category">Trier par catégorie</option>
+    <option value="availability">Trier par disponibilité</option>
+  </select>
+
+  <div>
+    Totaux : <strong>{{ totalCount }}</strong> — Affichés :
+    <strong>{{ displayedCount }}</strong>
+  </div>
+</div>
+
+<app-book-list
+  [books]="displayedBooks"
+  (edit)="onEdit($event)"
+  (delete)="onDelete($event)"
+>
+</app-book-list>
+
+<hr />
+
+<app-book-form
+  [categories]="categories"
+  [bookToEdit]="selectedBook"
+  (save)="onSave($event)"
+>
+</app-book-form>

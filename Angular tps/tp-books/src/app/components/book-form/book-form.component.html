@@ -1,0 +1,151 @@
+<h3>{{ isEdit ? "Modifier un Livre" : "Ajouter un Livre" }}</h3>
+
+<form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+  <!-- TITLE -->
+  <div>
+    <label for="title">Titre</label><br />
+    <input
+      id="title"
+      name="title"
+      [(ngModel)]="model.title"
+      required
+      minlength="3"
+      pattern="^(?!\\d+$).+"
+      #title="ngModel"
+    />
+    <div *ngIf="title.invalid && title.dirty">
+      <small *ngIf="title.errors?.['required']">Le titre est requis.</small>
+      <small *ngIf="title.errors?.['minlength']">Au moins 3 caractères.</small>
+      <small *ngIf="title.errors?.['pattern']"
+        >Le titre ne peut pas être composé uniquement de chiffres.</small
+      >
+    </div>
+  </div>
+
+  <!-- AUTHOR -->
+  <div>
+    <label for="author">Auteur</label><br />
+    <input
+      id="author"
+      name="author"
+      [(ngModel)]="model.author"
+      required
+      minlength="3"
+      #author="ngModel"
+    />
+    <div *ngIf="author.invalid && author.dirty">
+      <small *ngIf="author.errors?.['required']">L'auteur est requis.</small>
+      <small *ngIf="author.errors?.['minlength']">Au moins 3 caractères.</small>
+    </div>
+  </div>
+
+  <!-- PUBLISHER EMAIL -->
+  <div>
+    <label for="publisherEmail">Email éditeur</label><br />
+    <input
+      id="publisherEmail"
+      name="publisherEmail"
+      type="email"
+      [(ngModel)]="model.publisherEmail"
+      required
+      #pubEmail="ngModel"
+    />
+    <div *ngIf="pubEmail.invalid && pubEmail.dirty">
+      <small *ngIf="pubEmail.errors?.['required']">L'email est requis.</small>
+      <small *ngIf="pubEmail.errors?.['email']">Format d'email invalide.</small>
+    </div>
+  </div>
+
+  <!-- PUBLISHER PHONE (optionnel pattern 8 chiffres tunisien) -->
+  <div>
+    <label for="publisherPhone">Téléphone éditeur (optionnel)</label><br />
+    <input
+      id="publisherPhone"
+      name="publisherPhone"
+      [(ngModel)]="model.publisherPhone"
+      pattern="^[0-9]{8}$"
+      #pphone="ngModel"
+    />
+    <div *ngIf="pphone.invalid && pphone.dirty">
+      <small *ngIf="pphone.errors?.['pattern']"
+        >Doit contenir exactement 8 chiffres (ex: 12345678).</small
+      >
+    </div>
+  </div>
+
+  <!-- RELEASE DATE -->
+  <div>
+    <label for="releaseDate">Date de parution</label><br />
+    <input
+      id="releaseDate"
+      name="releaseDate"
+      type="date"
+      [(ngModel)]="model.releaseDate"
+      required
+      min="1900-01-01"
+      #rdate="ngModel"
+    />
+    <div *ngIf="rdate.invalid && rdate.dirty">
+      <small *ngIf="rdate.errors?.['required']">La date est requise.</small>
+      <small *ngIf="rdate.errors?.['min']">La date doit être après 1900.</small>
+    </div>
+  </div>
+
+  <!-- CATEGORY -->
+  <div>
+    <label for="category">Catégorie</label><br />
+    <select
+      id="category"
+      name="category"
+      [(ngModel)]="model.category"
+      required
+      #cat="ngModel"
+    >
+      <option value="">-- Choisir --</option>
+      <option *ngFor="let c of categories" [value]="c">{{ c }}</option>
+    </select>
+    <div *ngIf="cat.invalid && cat.dirty">
+      <small>La catégorie est requise.</small>
+    </div>
+  </div>
+
+  <!-- AVAILABLE -->
+  <div>
+    <label>
+      <input
+        id="isAvailable"
+        name="isAvailable"
+        type="checkbox"
+        [(ngModel)]="model.isAvailable"
+      />
+      Disponible
+    </label>
+  </div>
+
+  <!-- STOCK (facultatif, min=0 si renseigné) -->
+  <div>
+    <label for="stock">Stock (optionnel)</label><br />
+    <input
+      id="stock"
+      name="stock"
+      type="number"
+      [(ngModel)]="model.stock"
+      min="0"
+      #stockModel="ngModel"
+    />
+    <div *ngIf="stockModel.invalid && stockModel.dirty">
+      <small *ngIf="stockModel.errors?.['min']">Le stock doit être >= 0.</small>
+    </div>
+  </div>
+
+  <br />
+  <button type="submit" [disabled]="f.invalid">
+    {{ isEdit ? "Mettre à jour" : "Ajouter" }}
+  </button>
+  <button
+    type="button"
+    (click)="resetModel(); f.resetForm({ isAvailable: true }); isEdit = false"
+  >
+    Annuler
+  </button>
+</form>

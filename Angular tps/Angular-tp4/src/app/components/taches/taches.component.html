@@ -1,0 +1,30 @@
+<h2>Gestion des Tâches</h2>
+
+<!-- Si liste non vide -->
+<div *ngIf="taches.length > 0; else pasDeTaches">
+
+  <div *ngFor="let t of taches" 
+       class="task"
+       [ngClass]="{ 'completed': t.completed }"
+       [ngStyle]="{
+         'color': t.priorite === 'haute' ? 'red' :
+                  t.priorite === 'moyenne' ? 'orange' :
+                  'green'
+       }">
+
+    <p>{{ t.description }}</p>
+
+    <p>Priorité : {{ t.priorite }}</p>
+
+    <button (click)="toggleStatus(t)">
+      {{ t.completed ? 'Marquer non complétée' : 'Marquer complétée' }}
+    </button>
+
+  </div>
+
+</div>
+
+<!-- Template si liste vide -->
+<ng-template #pasDeTaches>
+  <p class="empty">Aucune tâche à afficher</p>
+</ng-template>

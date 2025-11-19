@@ -1,0 +1,17 @@
+<img [src]="imageUrl" alt="Product Image" width="200" />
+
+<!-- <button (click)="afficherAlerte()">Click Me</button> -->
+
+<button (click)="ajouter()">Ajouter au panier</button>
+
+<h3>{{ nomProduit }} recu depuis le composant parent</h3>
+<p>Prix : {{ prix | currency:'EUR':'symbol':'1.2-2' }}</p>
+<!-- <div
+  class="produit"
+  [class.stock-dis]="enStock"
+  [class.stock-indis]="!enStock"
+  [style.border]="enStock ? '2px solid green' : '2px solid red'"
+>
+  <p>status : {{ enStock ? "en stock" : "indisponible" }}</p>
+  <button (click)="toggleStock()">Basculer le stock</button>
+</div> -->
