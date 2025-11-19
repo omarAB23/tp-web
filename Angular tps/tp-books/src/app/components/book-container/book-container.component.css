@@ -1,0 +1,40 @@
+:host {
+  display: block;
+  padding: 16px;
+  font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #222;
+  box-sizing: border-box;
+}
+
+h2 {
+  margin: 0 0 12px 0;
+  font-size: 1.4rem;
+  color: #1f3a63;
+}
+
+/* toolbar (recherche / tri / totaux) */
+:host > div {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+input[type="text"],
+select {
+  padding: 8px 10px;
+  border: 1px solid #cfd8e3;
+  border-radius: 4px;
+  font-size: 0.95rem;
+}
+
+:host > div > div {
+  margin-left: auto;
+  font-size: 0.95rem;
+}
+
+hr {
+  margin: 18px 0;
+  border: none;
+  border-top: 1px solid #e6eef8;
+}
